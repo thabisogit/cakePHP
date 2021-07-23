@@ -70,6 +70,11 @@ class SchoolsTable extends Table
             ->requirePresence('school_name', 'create')
             ->notEmptyString('school_name');
 
+        $validator
+            ->scalar('area')
+            ->maxLength('area', 255)
+            ->allowEmptyString('area');
+
         return $validator;
     }
 

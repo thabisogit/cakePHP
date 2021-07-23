@@ -20,6 +20,7 @@ class SchoolsFixture extends TestFixture
         'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'school_name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_bin', 'comment' => '', 'precision' => null],
         'province_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'area' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null],
         '_indexes' => [
             'province_id' => ['type' => 'index', 'columns' => ['province_id'], 'length' => []],
         ],
@@ -44,6 +45,7 @@ class SchoolsFixture extends TestFixture
                 'id' => 1,
                 'school_name' => 'Lorem ipsum dolor sit amet',
                 'province_id' => 1,
+                'area' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

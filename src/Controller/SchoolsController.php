@@ -61,14 +61,14 @@ class SchoolsController extends AppController
     }
 
     function getLearner($learner_id){
-            $learners = $this->getTableLocator()->get('Learners');
-            $learner = $learners
-                ->find()
-                ->select(['id','first_name'])
-                ->where(['id' => $learner_id])
-                ->first();
+        $learners = $this->getTableLocator()->get('Learners');
+        $learner = $learners
+            ->find()
+            ->select(['id','first_name'])
+            ->where(['id' => $learner_id])
+            ->first();
 
-            return $learner;
+        return $learner;
 
     }
 

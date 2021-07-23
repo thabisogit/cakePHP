@@ -30,6 +30,13 @@
     </div>
 
     <div class="mb-3 row">
+        <label for="area" class="col-sm-2 col-form-label" style="font-weight: bold">Area :</label>
+        <div class="col-sm-10">
+            <?= h($school->area) ?>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
         <legend class="col-sm-6"><?= __('Learners in this School') ?></legend>
             <?php if (!empty($school->learner_school)) : ?>
                 <div class="table-responsive">

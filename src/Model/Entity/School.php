@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $school_name
  * @property int|null $province_id
+ * @property string|null $area
  *
  * @property \App\Model\Entity\Province $province
  * @property \App\Model\Entity\LearnerSchool[] $learner_school
@@ -29,6 +30,7 @@ class School extends Entity
     protected $_accessible = [
         'school_name' => true,
         'province_id' => true,
+        'area' => true,
         'province' => true,
         'learner_school' => true,
     ];

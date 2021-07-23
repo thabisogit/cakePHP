@@ -14,6 +14,7 @@
                 <th>Id</th>
                 <th>School Name</th>
                 <th>Province</th>
+                <th>Area</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <td><?= $this->Number->format($school->id) ?></td>
                     <td><?= h($school->school_name) ?></td>
                     <td><?= $school->has('province') ? $this->Html->link($school->province->province_name, ['controller' => 'Provinces', 'action' => 'view', $school->province->id]) : '' ?></td>
+                    <td><?= h($school->area) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $school->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $school->id]) ?>
@@ -36,6 +38,7 @@
                 <th>Id</th>
                 <th>School Name</th>
                 <th>Province</th>
+                <th>Area</th>
                 <th>Actions</th>
             </tr>
             </tfoot>

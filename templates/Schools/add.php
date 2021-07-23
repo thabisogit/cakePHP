@@ -36,6 +36,13 @@
     </div>
 
     <div class="mb-3 row">
+        <label for="first_name" class="col-sm-2 col-form-label">Area</label>
+        <div class="col-sm-6">
+            <?php echo $this->Form->text('area',['class'=>'form-control']);?>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
         <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary btn-sm']) ?>
     </div>
     <?= $this->Form->end() ?>
