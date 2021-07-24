@@ -62,6 +62,7 @@
         <label for="contact_number" class="col-sm-2 col-form-label" style="font-weight: bold">Current School :</label>
         <div class="col-sm-10">
             <label id="currentSchool">Not assigned</label>
+            <input type="hidden" value="" name="current_school_id" id="current_school_id">
         </div>
     </div>
 
@@ -80,7 +81,7 @@
                     <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <select name="school_id" id="school_id" class="form-control">
-                                <option>-Please Select School</option>
+                                <option value="">-Please Select School</option>
                                 <?php foreach ($schools as $school): ?>
                                     <option value="<?= $school->id ?>"><?= $school->school_name ?></option>
                                 <?php endforeach; ?>
@@ -139,6 +140,7 @@
 <script type="text/javascript">
 
     $(function(){
+        $('#switchSchool').hide();
         getCurrentSchool();
         $('#toggleDiv').on('click',function(){
             $('#collapseExample').toggle();
@@ -146,6 +148,10 @@
 
 
         $(document).ready(function() {
+            $('#school_id').on('change', function () {
+                ( $(this).val() != '' ? $('#switchSchool').show() : $('#switchSchool').hide());
+            });
+
             $('.close-modal').on('click',function(){
                 $('#myModal').modal('hide');
             });
@@ -197,11 +203,12 @@
                 },
                 datatype:'json',
                 cache: false,
-                data: {learner_id:<?= h($learner->id) ?>,school_id:$('#school_id').val()},
+                data: {learner_id:<?= h($learner->id) ?>,school_id:$('#school_id').val(),current_school:$('#current_school_id').val()},
 
             })
                 .done(function(){
                     $('#myModal').modal('show');
+                    getCurrentSchool();
                 });
             });
         });
@@ -221,7 +228,8 @@
             data: {learner_id:<?= h($learner->id) ?>}
         })
             .done(function(data){
-                 $('#currentSchool').html(data.current_school);
+                 $('#currentSchool').html(data.current_school.school_name);
+                 $('#current_school_id').val(data.current_school.school_id);
             });
 
     }

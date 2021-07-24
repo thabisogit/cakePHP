@@ -109,14 +109,23 @@ class LearnerSchoolController extends AppController
     public function saveData()
     {
         if($this->request->is('post')){
+
             $learner_id = $this->request->getData('learner_id');
             $school_id = $this->request->getData('school_id');
+            $current_school_id = $this->request->getData('current_school_id');
 
             $connection = ConnectionManager::get('default');
             $connection->insert('learner_school', [
                 'leaner_id' => $learner_id,
                 'school_id' => $school_id
             ]);
+
+            $connection->insert('transfer_history', [
+                'from_school_id' => $current_school_id,
+                'to_school_id' => $school_id,
+                'leaner_id' => $learner_id
+            ]);
+
             return $this->redirect( Router::url( $this->referer(), true ) );
         }
     }

@@ -156,10 +156,10 @@ class SchoolsController extends AppController
             ->fetchAll('assoc');
 
         $currentSchool = $connection
-            ->execute('SELECT school_name FROM schools WHERE id = :id ', ['id' => $results[count($results)-1]['school_id']])
+            ->execute('SELECT id,school_name FROM schools WHERE id = :id ', ['id' => $results[count($results)-1]['school_id']])
             ->fetchAll('assoc');
 //dd($currentSchool);
-        $this->set(['current_school' => $currentSchool[0]['school_name']]);
+        $this->set(['current_school' => ['school_name'=>$currentSchool[0]['school_name'],'school_id'=>$currentSchool[0]['id']]]);
         $this->viewBuilder()->setOption('serialize', true);
         $this->RequestHandler->renderAs($this, 'json');
     }
