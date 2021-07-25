@@ -112,7 +112,7 @@ class LearnerSchoolController extends AppController
 
             $learner_id = $this->request->getData('learner_id');
             $school_id = $this->request->getData('school_id');
-            $current_school_id = $this->request->getData('current_school_id');
+            $current_school_id = $this->request->getData('current_school');
 
             $connection = ConnectionManager::get('default');
             $connection->insert('learner_school', [
@@ -144,7 +144,6 @@ class LearnerSchoolController extends AppController
             ->find()
             ->select(['from_school_id', 'to_school_id'])
             ->where(['leaner_id =' => $this->request->getData('learner_id')])
-//            ->order(['id' => 'DESC'])
             ->all();
 
         foreach ($query1 as $rec) {

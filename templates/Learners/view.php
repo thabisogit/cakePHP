@@ -157,7 +157,6 @@
             });
 
             $('#nav-profile-tab').on('click',function(){
-
                 $.ajax({
                     type: 'POST',
                     url: "<?php echo $this->Url->build(['controller' => 'LearnerSchool','action' => 'getLearnerHistory']); ?>",
@@ -194,7 +193,7 @@
             });
 
         $('#switchSchool').on('click',function(){
-
+var current_school = $('#current_school_id').val();
             $.ajax({
                 type: 'POST',
                 url: "<?php echo $this->Url->build(['controller' => 'LearnerSchool','action' => 'saveData']); ?>",
@@ -203,7 +202,7 @@
                 },
                 datatype:'json',
                 cache: false,
-                data: {learner_id:<?= h($learner->id) ?>,school_id:$('#school_id').val(),current_school:$('#current_school_id').val()},
+                data: {learner_id:<?= h($learner->id) ?>,school_id:$('#school_id').val(),current_school:current_school},
 
             })
                 .done(function(){
