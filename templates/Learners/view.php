@@ -140,6 +140,9 @@
 <script type="text/javascript">
 
     $(function(){
+        $('#nav-home-tab').removeClass('active');
+        $('#nav-profile-tab').removeClass('active');
+
         $('#switchSchool').hide();
         getCurrentSchool();
         $('#toggleDiv').on('click',function(){

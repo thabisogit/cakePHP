@@ -55,7 +55,7 @@ class LearnerSchoolController extends AppController
             $learnerSchool_table = TableRegistry::getTableLocator()->get('LearnerSchool');
             $records = $learnerSchool_table->newEntity(['learner_id'=>$learner_id,'school_id'=>$school_id]);
             if($learnerSchool_table->save($records))
-                dd(123456);
+//                dd(123456);
                 echo "User is added.";
         }
     }
@@ -120,11 +120,14 @@ class LearnerSchoolController extends AppController
                 'school_id' => $school_id
             ]);
 
-            $connection->insert('transfer_history', [
-                'from_school_id' => $current_school_id,
-                'to_school_id' => $school_id,
-                'leaner_id' => $learner_id
-            ]);
+            if($current_school_id != '' || $current_school_id != null){
+                $connection->insert('transfer_history', [
+                    'from_school_id' => $current_school_id,
+                    'to_school_id' => $school_id,
+                    'leaner_id' => $learner_id
+                ]);
+            }
+
 
             return $this->redirect( Router::url( $this->referer(), true ) );
         }
