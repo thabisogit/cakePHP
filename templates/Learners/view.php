@@ -156,7 +156,16 @@
                 $('#myModal').modal('hide');
             });
 
+            $('#nav-home-tab').on('click',function() {
+
+                $('#nav-home-tab').addClass('active');
+                $('#nav-profile-tab').removeClass('active');
+            });
+
             $('#nav-profile-tab').on('click',function(){
+
+                $('#nav-profile-tab').addClass('active');
+                $('#nav-home-tab').removeClass('active');
                 $.ajax({
                     type: 'POST',
                     url: "<?php echo $this->Url->build(['controller' => 'LearnerSchool','action' => 'getLearnerHistory']); ?>",

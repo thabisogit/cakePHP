@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 23, 2021 at 03:22 PM
+-- Generation Time: Jul 26, 2021 at 05:38 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.2.33
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `learners` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `learners`
@@ -48,7 +48,9 @@ CREATE TABLE IF NOT EXISTS `learners` (
 INSERT INTO `learners` (`id`, `first_name`, `last_name`, `id_number`, `dob`, `home_address`, `contact_number`, `created`, `modified`) VALUES
 (2, 'Thabiso0', 'Ngubane', '9203015425086', '2021-07-13', 'Emaqeleni Imbali', '087325552', '2021-07-20 14:49:03', '2021-07-21 11:27:10'),
 (3, 'test', 'test surname', '123456789', '2021-07-22', '1231 Imbali Uini', '0215666789', '2021-07-21 17:44:53', '2021-07-21 17:44:53'),
-(4, 'Alondwe', 'Ngubane', '20166665552554', '2021-07-16', 'lhudsfhjfhg', '098765445', '2021-07-23 08:29:50', '2021-07-23 08:29:50');
+(4, 'Alondwe', 'Ngubane', '20166665552554', '2021-07-16', 'lhudsfhjfhg', '098765445', '2021-07-23 08:29:50', '2021-07-23 08:29:50'),
+(5, 'Testing', 'last', '123456789', '2021-07-14', 'Thabiso Address', '02865412365', '2021-07-23 16:09:28', '2021-07-23 16:09:28'),
+(6, 'Syanda', 'Majozi', '323223658654', '2021-07-09', 'Ttts', '0874562352', '2021-07-25 23:00:42', '2021-07-25 23:00:42');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `learner_school` (
   PRIMARY KEY (`id`),
   KEY `leaner_id` (`leaner_id`),
   KEY `school_id` (`school_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `learner_school`
@@ -76,7 +78,26 @@ INSERT INTO `learner_school` (`id`, `leaner_id`, `school_id`) VALUES
 (6, 3, 4),
 (7, 3, 3),
 (8, 3, 3),
-(9, 3, 4);
+(9, 3, 4),
+(10, 4, 5),
+(11, 4, 3),
+(12, 4, 5),
+(13, 5, 3),
+(14, 5, 5),
+(15, 5, 4),
+(16, 5, 3),
+(17, 4, 3),
+(18, 4, 4),
+(19, 4, 5),
+(20, 4, 5),
+(21, 4, 4),
+(22, 4, 3),
+(23, 5, 4),
+(24, 5, 3),
+(25, 5, 4),
+(26, 6, 4),
+(27, 6, 3),
+(28, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -156,13 +177,13 @@ DROP TABLE IF EXISTS `transfer_history`;
 CREATE TABLE IF NOT EXISTS `transfer_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `leaner_id` int(11) NOT NULL,
-  `from_school_id` int(11) NOT NULL,
+  `from_school_id` int(11) DEFAULT NULL,
   `to_school_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `leaner_id` (`leaner_id`),
   KEY `from_school_id` (`from_school_id`),
   KEY `to_school_id` (`to_school_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transfer_history`
@@ -170,7 +191,19 @@ CREATE TABLE IF NOT EXISTS `transfer_history` (
 
 INSERT INTO `transfer_history` (`id`, `leaner_id`, `from_school_id`, `to_school_id`) VALUES
 (1, 3, 3, 4),
-(2, 3, 4, 3);
+(2, 3, 4, 3),
+(3, 4, 3, 3),
+(4, 4, 5, 5),
+(5, 5, 3, 3),
+(6, 5, 5, 5),
+(7, 4, 4, 5),
+(8, 4, 4, 4),
+(9, 4, 5, 3),
+(10, 5, 5, 4),
+(11, 5, 5, 3),
+(12, 5, 3, 4),
+(13, 6, 4, 3),
+(14, 6, 3, 5);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
