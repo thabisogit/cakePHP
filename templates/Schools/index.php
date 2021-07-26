@@ -26,6 +26,7 @@
                     <td><?= $school->has('province') ? $this->Html->link($school->province->province_name, ['controller' => 'Provinces', 'action' => 'view', $school->province->id]) : '' ?></td>
                     <td><?= h($school->area) ?></td>
                     <td class="actions">
+<!--                        <i class="far fa-eye"></i>-->
                         <?= $this->Html->link(__('View'), ['action' => 'view', $school->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $school->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $school->id], ['confirm' => __('Are you sure you want to delete # {0}?', $school->id)]) ?>
